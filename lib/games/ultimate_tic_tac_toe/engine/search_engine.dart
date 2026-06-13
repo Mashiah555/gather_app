@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:gather_app/tic_tac_toe/engine/game_state.dart';
+import 'package:gather_app/games/ultimate_tic_tac_toe/engine/game_state.dart';
 
 class TTEntry {
   final double value;

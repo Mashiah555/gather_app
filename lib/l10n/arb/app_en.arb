@@ -1,0 +1,72 @@
+{
+    "@@locale": "en",
+    "@@comment": "flutter gen-l10n",
+    "placeholder": "--TBD--",
+    "@placeholder": {
+        "description": "Generic placeholder text for undefined or empty values"
+    },
+    "save": "Save",
+    "@save": {
+        "description": "Text for standard 'Save' buttons"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Text for standard 'Cancel' buttons"
+    },
+    "add": "Add",
+    "@add": {
+        "description": "Text for standard 'Add' buttons"
+    },
+    "edit": "Edit",
+    "@edit": {
+        "description": "Text for standard 'Edit' buttons"
+    },
+    "required": "This field is required!",
+    "@required": {
+        "description": "Form validation error message for empty mandatory fields"
+    },
+    "outOfRange": "The value must be between 0 to 100",
+    "@outOfRange": {
+        "description": "Form validation error message for numeric inputs exceeding the 0-100 range"
+    },
+    "to": "to",
+    "@to": {
+        "description": "Preposition used in ranges, e.g., '1 to 10' or 'A to B'"
+    },
+    "by": "by",
+    "@by": {
+        "description": "Preposition used in sorters, e.g., 'by order' or 'by semester'"
+    },
+    "name": "Name",
+    "@name": {
+        "description": "Label for a standard name input field"
+    },
+    "website": "Website",
+    "@website": {
+        "description": "Label for a website URL input field"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Title for the application settings page"
+    },
+    "themeMode": "Theme Mode",
+    "@themeMode": {
+        "description": "Label for the setting that controls the application's visual theme"
+    },
+    "light": "Light",
+    "@light": {
+        "description": "Option for the light theme mode"
+    },
+    "dark": "Dark",
+    "@dark": {
+        "description": "Option for the dark theme mode"
+    },
+    "system": "System",
+    "@system": {
+        "description": "Option to follow the system's default theme mode"
+    },
+    "language": "Language",
+    "@language": {
+        "description": "Label for the setting that controls the application's language"
+    }
+}

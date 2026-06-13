@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:gather_app/tic_tac_toe/engine/game_state.dart';
-import 'package:gather_app/tic_tac_toe/engine/search_engine.dart';
+import 'package:gather_app/games/ultimate_tic_tac_toe/engine/game_state.dart';
+import 'package:gather_app/games/ultimate_tic_tac_toe/engine/search_engine.dart';
 
 // Top-level function for the Isolate
 int? _calculateAI(GameState stateClone) {

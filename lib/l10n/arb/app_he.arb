@@ -1,0 +1,21 @@
+{
+    "@@locale": "he",
+    "@@comment": "flutter gen-l10n",
+    "placeholder": "--TBD HE--",
+    "save": "שמירה",
+    "cancel": "ביטול",
+    "add": "הוספה",
+    "edit": "עריכה",
+    "required": "זהו שדה חובה!",
+    "outOfRange": "הערך חייב להיות בין 0 ל-100",
+    "to": "ל",
+    "by": "על ידי",
+    "name": "שם",
+    "website": "אתר",
+    "settings": "הגדרות",
+    "themeMode": "מצב תצוגה",
+    "light": "בהיר",
+    "dark": "כהה",
+    "system": "הגדרות מערכת",
+    "language": "שפה"
+}
