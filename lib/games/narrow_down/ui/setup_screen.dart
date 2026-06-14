@@ -5,7 +5,9 @@ import 'package:gather_app/games/narrow_down/engine/game_provider.dart';
 import 'package:gather_app/games/narrow_down/ui/game_screen.dart';
 
 class SetupScreen extends ConsumerStatefulWidget {
-  const SetupScreen({super.key});
+  const SetupScreen({super.key, required this.configs});
+
+  final Map<String, dynamic> configs;
 
   @override
   ConsumerState<SetupScreen> createState() => _SetupScreenState();

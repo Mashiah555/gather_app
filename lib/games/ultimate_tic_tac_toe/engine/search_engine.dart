@@ -33,7 +33,9 @@ class SearchEngine {
         double.infinity,
         state.turn == computer,
       );
-      if (result.move != null) bestMove = result.move;
+      if (result.move != null) {
+        bestMove = result.move;
+      }
 
       if (result.value >= victory - 100 || result.value <= loss + 100) {
         break; // Forced end

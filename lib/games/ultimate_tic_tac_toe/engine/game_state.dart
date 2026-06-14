@@ -224,7 +224,7 @@ class GameState {
 
   double _scoreGrid(Int8List grid, List<int> indices) {
     double score = 0;
-    for (var l in winLines) {
+    for (List<int> l in winLines) {
       int c1 = grid[indices[l[0]]],
           c2 = grid[indices[l[1]]],
           c3 = grid[indices[l[2]]];

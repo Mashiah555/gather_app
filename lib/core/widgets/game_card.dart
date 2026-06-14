@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gather_app/core/models/game_item.dart';
+import 'package:gather_app/core/models/game_models.dart';
+import 'package:gather_app/core/screens/game_prep_screen.dart';
 import 'package:gather_app/core/services/settings_provider.dart';
 
 class GameCard extends ConsumerStatefulWidget {
@@ -54,7 +55,7 @@ class _GameCardState extends ConsumerState<GameCard>
             context,
             PageRouteBuilder(
               pageBuilder: (context, animation, secondaryAnimation) =>
-                  widget.game.destination,
+                  GamePrepScreen(game: widget.game),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                     return FadeTransition(opacity: animation, child: child);
@@ -69,6 +70,7 @@ class _GameCardState extends ConsumerState<GameCard>
         child: ScaleTransition(
           scale: _scaleAnimation,
           child: Container(
+            clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
               gradient: LinearGradient(
@@ -95,11 +97,11 @@ class _GameCardState extends ConsumerState<GameCard>
               children: [
                 // Abstract background icon for texture
                 Positioned(
-                  right: -20,
-                  bottom: -20,
+                  right: -25,
+                  bottom: -25,
                   child: Icon(
                     widget.game.icon,
-                    size: 140,
+                    size: 175,
                     color: Colors.white.withAlpha(38),
                   ),
                 ),

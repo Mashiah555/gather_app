@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gather_app/core/models/game_item.dart';
 import 'package:gather_app/core/screens/settings_screen.dart';
 import 'package:gather_app/core/widgets/game_card.dart';
-import 'package:gather_app/games/narrow_down/ui/setup_screen.dart';
-import 'package:gather_app/games/ultimate_tic_tac_toe/ui/ultimate_tic_tac_toe_screen.dart';
+import 'package:gather_app/core/data/games_catalog.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -14,31 +11,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // The game catalog
-  final List<GameItem> _games = [
-    GameItem(
-      title: 'Ultimate Tic-Tac-Toe',
-      subtitle: 'Strategic grid warfare',
-      icon: Icons.grid_4x4_rounded,
-      gradient: const [Color(0xFF4A00E0), Color(0xFF8E2DE2)],
-      destination: const UltimateTicTacToeScreen(),
-    ),
-    GameItem(
-      title: 'The Road to CEO',
-      subtitle: 'Corporate simulation & strategy',
-      icon: Icons.business_center_rounded,
-      gradient: const [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)],
-      destination: const Placeholder(),
-    ),
-    GameItem(
-      title: 'Narrow Down',
-      subtitle: 'Social logic board game',
-      icon: Icons.batch_prediction_rounded,
-      gradient: const [Color(0xFFFF416C), Color(0xFFFF4B2B)],
-      destination: const ProviderScope(child: SetupScreen()),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -65,8 +37,8 @@ class _MainScreenState extends State<MainScreen> {
                       1.2, // Gives the cards a nice wide landscape feel
                 ),
                 delegate: SliverChildBuilderDelegate(
-                  (context, index) => GameCard(game: _games[index]),
-                  childCount: _games.length,
+                  (context, index) => GameCard(game: gamesCatalog[index]),
+                  childCount: gamesCatalog.length,
                 ),
               ),
             ),
