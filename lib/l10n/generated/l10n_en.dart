@@ -73,4 +73,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get simonSays => 'Simon Says';
+
+  @override
+  String get howToPlay => 'How to Play';
 }

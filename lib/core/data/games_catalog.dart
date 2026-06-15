@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gather_app/core/models/game_models.dart';
 import 'package:gather_app/games/narrow_down/ui/setup_screen.dart';
+import 'package:gather_app/games/target_time/ui/target_time_screen.dart';
 import 'package:gather_app/games/ultimate_tic_tac_toe/ui/ultimate_tic_tac_toe_screen.dart';
 import 'package:gather_app/l10n/generated/l10n.dart';
 
@@ -38,8 +39,8 @@ List<GameItem> getGamesCatalog(BuildContext context) {
             _ => 'Difficulty Level (How smart is the AI)',
           },
           min: 0,
-          max: 9,
-          divisions: 9,
+          max: 8,
+          divisions: 8,
           defaultValue: 6,
         ),
         DropdownConfig(
@@ -107,11 +108,11 @@ List<GameItem> getGamesCatalog(BuildContext context) {
       title: l10n.targetTime,
       subtitle: switch (lang) {
         'he' => 'מבחן של דיוק',
-        _ => 'Test of timing',
+        _ => 'A test of time precision',
       },
       description: switch (lang) {
         'he' => 'בזמן מטרה, השחקן הכי דייקן ינצח את השעון.',
-        _ => 'In Target Time, the most accurate players beats the clock.',
+        _ => 'In Target Time, the most precise players beats the clock.',
       },
       rules: switch (lang) {
         'he' =>
@@ -120,11 +121,19 @@ List<GameItem> getGamesCatalog(BuildContext context) {
           '1. The game starts with a specific goal time to get.\n2. The clock hides the true time.\n 3. The player that stoped the clock closest to the target time - wins!',
       },
       icon: Icons.access_alarm_rounded,
-      gradient: const [
-        Color.fromARGB(255, 159, 156, 28),
-        Color.fromARGB(255, 198, 224, 0),
-      ],
+      gradient: const [Color(0xDD00C9FF), Color(0xBB92FEAD)],
       configs: [
+        SliderConfig(
+          key: 'players',
+          title: switch (l10n.localeName) {
+            'he' => 'מספר השחקנים',
+            _ => 'Number of Players',
+          },
+          min: 1,
+          max: 6,
+          divisions: 5,
+          defaultValue: 2,
+        ),
         SliderConfig(
           key: 'time_limit',
           title: switch (l10n.localeName) {
@@ -134,10 +143,10 @@ List<GameItem> getGamesCatalog(BuildContext context) {
           min: 6,
           max: 20,
           divisions: 7,
-          defaultValue: 14,
+          defaultValue: 12,
         ),
       ],
-      gameBuilder: (configs) => UltimateTicTacToeScreen(configs: configs),
+      gameBuilder: (configs) => TargetTimeScreen(configs: configs),
     ),
     GameItem(
       title: l10n.simonSays,

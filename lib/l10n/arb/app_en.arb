@@ -88,5 +88,9 @@
     "simonSays": "Simon Says",
     "@simonSays": {
         "description": "The title of the 'Simon Says' game"
+    },
+    "howToPlay": "How to Play",
+    "@howToPlay": {
+        "description": "The title of the 'How to Play' expansion tile"
     }
 }

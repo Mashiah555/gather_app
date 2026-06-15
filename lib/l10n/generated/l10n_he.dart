@@ -73,4 +73,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get simonSays => 'המלך אמר';
+
+  @override
+  String get howToPlay => 'איך משחקים?';
 }

@@ -229,6 +229,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Simon Says'**
   String get simonSays;
+
+  /// The title of the 'How to Play' expansion tile
+  ///
+  /// In en, this message translates to:
+  /// **'How to Play'**
+  String get howToPlay;
 }
 
 class _AppLocalizationsDelegate
