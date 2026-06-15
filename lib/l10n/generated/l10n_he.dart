@@ -58,4 +58,19 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get language => 'שפה';
+
+  @override
+  String get ultimateTicTacToe => 'סופר איקס עיגול';
+
+  @override
+  String get narrowDown => 'צמצמו את זה';
+
+  @override
+  String get crocodileRoulette => 'רולטת שיניים';
+
+  @override
+  String get targetTime => 'זמן מטרה';
+
+  @override
+  String get simonSays => 'המלך אמר';
 }

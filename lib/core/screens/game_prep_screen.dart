@@ -13,7 +13,6 @@ class GamePrepScreen extends StatefulWidget {
 class _GamePrepScreenState extends State<GamePrepScreen> {
   // Holds the current state of all configurations for this game
   final Map<String, dynamic> _currentConfigs = {};
-  bool _rulesExpanded = false;
 
   @override
   void initState() {
@@ -134,8 +133,6 @@ class _GamePrepScreenState extends State<GamePrepScreen> {
                 Icons.menu_book_rounded,
                 color: theme.colorScheme.primary,
               ),
-              onExpansionChanged: (expanded) =>
-                  setState(() => _rulesExpanded = expanded),
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),

@@ -199,6 +199,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get language;
+
+  /// The title of the 'Ultimate Tic Tac Toe' game
+  ///
+  /// In en, this message translates to:
+  /// **'Ultimate Tic Tac Toe'**
+  String get ultimateTicTacToe;
+
+  /// The title of the 'Narrow Down' game
+  ///
+  /// In en, this message translates to:
+  /// **'Narrow Down'**
+  String get narrowDown;
+
+  /// The title of the 'Crocodile Roulette' game
+  ///
+  /// In en, this message translates to:
+  /// **'Crocodile Roulette'**
+  String get crocodileRoulette;
+
+  /// The title of the 'Target Time' game
+  ///
+  /// In en, this message translates to:
+  /// **'Target Time'**
+  String get targetTime;
+
+  /// The title of the 'Simon Says' game
+  ///
+  /// In en, this message translates to:
+  /// **'Simon Says'**
+  String get simonSays;
 }
 
 class _AppLocalizationsDelegate

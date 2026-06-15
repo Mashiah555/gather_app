@@ -17,5 +17,10 @@
     "light": "בהיר",
     "dark": "כהה",
     "system": "הגדרות מערכת",
-    "language": "שפה"
+    "language": "שפה",
+    "ultimateTicTacToe": "סופר איקס עיגול",
+    "narrowDown": "צמצמו את זה",
+    "crocodileRoulette": "רולטת שיניים",
+    "targetTime": "זמן מטרה",
+    "simonSays": "המלך אמר"
 }

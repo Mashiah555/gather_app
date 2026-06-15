@@ -58,4 +58,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get language => 'Language';
+
+  @override
+  String get ultimateTicTacToe => 'Ultimate Tic Tac Toe';
+
+  @override
+  String get narrowDown => 'Narrow Down';
+
+  @override
+  String get crocodileRoulette => 'Crocodile Roulette';
+
+  @override
+  String get targetTime => 'Target Time';
+
+  @override
+  String get simonSays => 'Simon Says';
 }

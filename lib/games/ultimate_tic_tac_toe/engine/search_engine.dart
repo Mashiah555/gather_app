@@ -26,7 +26,7 @@ class SearchEngine {
         break; // Stop deepening if out of time
       }
 
-      var result = _alphabeta(
+      var result = _alphabetaPruning(
         state,
         depth,
         double.negativeInfinity,
@@ -44,7 +44,7 @@ class SearchEngine {
     return bestMove;
   }
 
-  ({double value, int? move}) _alphabeta(
+  ({double value, int? move}) _alphabetaPruning(
     GameState state,
     int depth,
     double alpha,
@@ -79,7 +79,7 @@ class SearchEngine {
       double v = double.negativeInfinity;
       for (int move in moves) {
         state.makeMove(move);
-        var result = _alphabeta(state, depth - 1, alpha, beta, false);
+        var result = _alphabetaPruning(state, depth - 1, alpha, beta, false);
         state.unmakeMove();
 
         if (result.value > v) {
@@ -95,7 +95,7 @@ class SearchEngine {
       double v = double.infinity;
       for (int move in moves) {
         state.makeMove(move);
-        var result = _alphabeta(state, depth - 1, alpha, beta, true);
+        var result = _alphabetaPruning(state, depth - 1, alpha, beta, true);
         state.unmakeMove();
 
         if (result.value < v) {

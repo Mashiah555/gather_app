@@ -68,5 +68,25 @@
     "language": "Language",
     "@language": {
         "description": "Label for the setting that controls the application's language"
+    },
+    "ultimateTicTacToe": "Ultimate Tic Tac Toe",
+    "@ultimateTicTacToe": {
+        "description": "The title of the 'Ultimate Tic Tac Toe' game"
+    },
+    "narrowDown": "Narrow Down",
+    "@narrowDown": {
+        "description": "The title of the 'Narrow Down' game"
+    },
+    "crocodileRoulette": "Crocodile Roulette",
+    "@crocodileRoulette": {
+        "description": "The title of the 'Crocodile Roulette' game"
+    },
+    "targetTime": "Target Time",
+    "@targetTime": {
+        "description": "The title of the 'Target Time' game"
+    },
+    "simonSays": "Simon Says",
+    "@simonSays": {
+        "description": "The title of the 'Simon Says' game"
     }
 }

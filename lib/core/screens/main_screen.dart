@@ -14,6 +14,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final gamesCatalog = getGamesCatalog(context);
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
