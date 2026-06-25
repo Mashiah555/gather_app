@@ -12,6 +12,9 @@ import 'package:gather_app/l10n/generated/l10n.dart';
 */
 
 void main() async {
+  // Ensures Flutter bindings are initialized
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Load SharedPreferences before the app starts
   await PreferencesService.instance.init();
   final prefs = PreferencesService.instance.prefs;

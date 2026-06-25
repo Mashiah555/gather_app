@@ -1,7 +1,9 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gather_app/core/models/game_models.dart';
 import 'package:gather_app/games/crocodile_roulette/views/crocodile_roulette_screen.dart';
+import 'package:gather_app/games/eat_it/eat_it_engine.dart';
 import 'package:gather_app/games/narrow_down/ui/setup_screen.dart';
 import 'package:gather_app/games/simon_says/views/simon_says_screen.dart';
 import 'package:gather_app/games/target_time/ui/target_time_screen.dart';
@@ -59,6 +61,33 @@ final gameRepositoryProvider = Provider<List<GameItem>>((ref) {
         ),
       ],
       gameBuilder: (configs) => UltimateTicTacToeScreen(configs: configs),
+    ),
+    GameItem(
+      id: 'eat_it',
+      titleBuilder: (l10n) => 'Eat It',
+      subtitleBuilder: (l10n) => switch (l10n.localeName) {
+        'he' => 'לוחמת משבצות אסטרטגית',
+        _ => 'Strategic grid warfare',
+      },
+      descriptionBuilder: (l10n) => switch (l10n.localeName) {
+        'he' =>
+          'גרסה מורחבת של משחק איקס-עיגול קלאסי שבה כל תור קובע היכן היריב יוכל לשחק את התור הבא שלו',
+        _ =>
+          'A deeply strategic variant of classic Tic-Tac-Toe where every move dictates where your opponent can play next.',
+      },
+      rulesBuilder: (l10n) => switch (l10n.localeName) {
+        'he' =>
+          '1. הלוח מורכב מרשת של 9 על 9 משבצות שמחולק ללוחות בסיסיים של 3 על 3 משבצות.\n2. ניצחון בלוח בסיסי מהווה משבצת יחידה בלוח המורחב.\n3.מיקום המשבצת שבה שיחקת קובעת באיזה לוח בסיסי היריב שלך מחויב לשחק בתור הבא.\n4. המשחק נגמר כאשר שחקן מנצח בטור של 3 לוחות.',
+        _ =>
+          '1. The board is a 9x9 grid divided into 9 local 3x3 boards.\n2. Winning a local board claims it for the macro-board.\n3. Your move coordinates determine which local board your opponent must play in next.\n4. Win 3 local boards in a row to win the game.',
+      },
+      icon: Icons.house_rounded,
+      gradient: const [
+        Color.fromARGB(255, 224, 220, 0),
+        Color.fromARGB(255, 226, 114, 45),
+      ],
+      configs: [],
+      gameBuilder: (configs) => Scaffold(body: GameWidget(game: EatItEngine())),
     ),
     GameItem(
       id: 'narrow_down',
