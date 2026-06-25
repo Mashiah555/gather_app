@@ -4,26 +4,23 @@ import 'package:gather_app/core/models/game_models.dart';
 import 'package:gather_app/games/narrow_down/ui/setup_screen.dart';
 import 'package:gather_app/games/target_time/ui/target_time_screen.dart';
 import 'package:gather_app/games/ultimate_tic_tac_toe/ui/ultimate_tic_tac_toe_screen.dart';
-import 'package:gather_app/l10n/generated/l10n.dart';
 
-List<GameItem> getGamesCatalog(BuildContext context) {
-  final l10n = AppLocalizations.of(context);
-  final lang = l10n.localeName;
-
+final gameRepositoryProvider = Provider<List<GameItem>>((ref) {
   return [
     GameItem(
-      title: l10n.ultimateTicTacToe,
-      subtitle: switch (lang) {
+      id: 'ultimate_tic_tac_toe',
+      titleBuilder: (l10n) => l10n.ultimateTicTacToe,
+      subtitleBuilder: (l10n) => switch (l10n.localeName) {
         'he' => 'לוחמת משבצות אסטרטגית',
         _ => 'Strategic grid warfare',
       },
-      description: switch (lang) {
+      descriptionBuilder: (l10n) => switch (l10n.localeName) {
         'he' =>
           'גרסה מורחבת של משחק איקס-עיגול קלאסי שבה כל תור קובע היכן היריב יוכל לשחק את התור הבא שלו',
         _ =>
           'A deeply strategic variant of classic Tic-Tac-Toe where every move dictates where your opponent can play next.',
       },
-      rules: switch (lang) {
+      rulesBuilder: (l10n) => switch (l10n.localeName) {
         'he' =>
           '1. הלוח מורכב מרשת של 9 על 9 משבצות שמחולק ללוחות בסיסיים של 3 על 3 משבצות.\n2. ניצחון בלוח בסיסי מהווה משבצת יחידה בלוח המורחב.\n3.מיקום המשבצת שבה שיחקת קובעת באיזה לוח בסיסי היריב שלך מחויב לשחק בתור הבא.\n4. המשחק נגמר כאשר שחקן מנצח בטור של 3 לוחות.',
         _ =>
@@ -34,7 +31,7 @@ List<GameItem> getGamesCatalog(BuildContext context) {
       configs: [
         SliderConfig(
           key: 'ai_depth',
-          title: switch (lang) {
+          titleBuilder: (l10n) => switch (l10n.localeName) {
             'he' => 'רמת הקושי (עד כמה ה-AI חכם)',
             _ => 'Difficulty Level (How smart is the AI)',
           },
@@ -45,15 +42,15 @@ List<GameItem> getGamesCatalog(BuildContext context) {
         ),
         DropdownConfig(
           key: 'time_limit',
-          title: switch (lang) {
+          titleBuilder: (l10n) => switch (l10n.localeName) {
             'he' => 'זמן מקסימלי לתור',
             _ => 'Max Time Per Turn',
           },
-          options: switch (lang) {
+          optionsBuilder: (l10n) => switch (l10n.localeName) {
             'he' => ['10 שניות', '30 שניות', '60 שניות', 'ללא הגבלה'],
             _ => ['10 seconds', '30 seconds', '60 seconds', 'Unlimited'],
           },
-          defaultValue: switch (lang) {
+          defaultValueBuilder: (l10n) => switch (l10n.localeName) {
             'he' => '30 שניות',
             _ => '30 seconds',
           },
@@ -62,17 +59,18 @@ List<GameItem> getGamesCatalog(BuildContext context) {
       gameBuilder: (configs) => UltimateTicTacToeScreen(configs: configs),
     ),
     GameItem(
-      title: l10n.narrowDown,
-      subtitle: switch (lang) {
+      id: 'narrow_down',
+      titleBuilder: (l10n) => l10n.narrowDown,
+      subtitleBuilder: (l10n) => switch (l10n.localeName) {
         'he' => 'משחק מחשבה חברתי',
         _ => 'Social logic board game',
       },
-      description: switch (lang) {
+      descriptionBuilder: (l10n) => switch (l10n.localeName) {
         'he' => 'משחק קבוצות תחרותי שבו הקבוצה צריכה לנחש תשובה לשאלה חלקית.',
         _ =>
           'A competitive group based game, where each group has to guess the answer to a partial question.',
       },
-      rules: switch (lang) {
+      rulesBuilder: (l10n) => switch (l10n.localeName) {
         'he' => '',
         _ => '',
       },
@@ -84,16 +82,17 @@ List<GameItem> getGamesCatalog(BuildContext context) {
       ), // Pass configs to your game
     ),
     GameItem(
-      title: l10n.crocodileRoulette,
-      subtitle: switch (lang) {
+      id: 'crocodile_roulette',
+      titleBuilder: (l10n) => l10n.crocodileRoulette,
+      subtitleBuilder: (l10n) => switch (l10n.localeName) {
         'he' => 'להחליט',
         _ => 'TBD',
       },
-      description: switch (lang) {
+      descriptionBuilder: (l10n) => switch (l10n.localeName) {
         'he' => 'משחק הישרדות מבוסס מזל.',
         _ => 'A survival luck-based game.',
       },
-      rules: switch (lang) {
+      rulesBuilder: (l10n) => switch (l10n.localeName) {
         'he' =>
           '1. כל שחקן בתורו בוחר שן תנין.\n2. אם תיבחרו את השן הלא נכונה, התנין יאכל אתכם!\n3. השחקן האחרון ששורד - מנצח.',
         _ =>
@@ -105,16 +104,17 @@ List<GameItem> getGamesCatalog(BuildContext context) {
       gameBuilder: (configs) => UltimateTicTacToeScreen(configs: configs),
     ),
     GameItem(
-      title: l10n.targetTime,
-      subtitle: switch (lang) {
+      id: 'target_time',
+      titleBuilder: (l10n) => l10n.targetTime,
+      subtitleBuilder: (l10n) => switch (l10n.localeName) {
         'he' => 'מבחן של דיוק',
         _ => 'A test of time precision',
       },
-      description: switch (lang) {
+      descriptionBuilder: (l10n) => switch (l10n.localeName) {
         'he' => 'בזמן מטרה, השחקן הכי דייקן ינצח את השעון.',
         _ => 'In Target Time, the most precise players beats the clock.',
       },
-      rules: switch (lang) {
+      rulesBuilder: (l10n) => switch (l10n.localeName) {
         'he' =>
           '1. המשחק מתחיל עם זמן מטרה ספציפי.\n2. השעון מסתיר את הזמן האמיתי\n3. השחקן שעצר את השעון בזמן שקרוב ביותר לזמן המטרה - מנצח!',
         _ =>
@@ -125,7 +125,7 @@ List<GameItem> getGamesCatalog(BuildContext context) {
       configs: [
         SliderConfig(
           key: 'players',
-          title: switch (l10n.localeName) {
+          titleBuilder: (l10n) => switch (l10n.localeName) {
             'he' => 'מספר השחקנים',
             _ => 'Number of Players',
           },
@@ -136,7 +136,7 @@ List<GameItem> getGamesCatalog(BuildContext context) {
         ),
         SliderConfig(
           key: 'time_limit',
-          title: switch (l10n.localeName) {
+          titleBuilder: (l10n) => switch (l10n.localeName) {
             'he' => 'הגבלת זמן (שניות)',
             _ => 'Time Limit (seconds)',
           },
@@ -149,16 +149,17 @@ List<GameItem> getGamesCatalog(BuildContext context) {
       gameBuilder: (configs) => TargetTimeScreen(configs: configs),
     ),
     GameItem(
-      title: l10n.simonSays,
-      subtitle: switch (lang) {
+      id: 'simon_says',
+      titleBuilder: (l10n) => l10n.simonSays,
+      subtitleBuilder: (l10n) => switch (l10n.localeName) {
         'he' => 'משחק של מיקוד וקשב',
         _ => 'A game of focus and attention',
       },
-      description: switch (lang) {
+      descriptionBuilder: (l10n) => switch (l10n.localeName) {
         'he' => 'עקבו אחר האורות הזוהרים וחזרו על הסדר המדויק.',
         _ => 'Follow the glowing lights and repeat the exact sequence.',
       },
-      rules: switch (lang) {
+      rulesBuilder: (l10n) => switch (l10n.localeName) {
         'he' =>
           '1. המשחק ידליק אורות בסדר ספציפי\n2. עליכם לחזור על האורות בסדר המדויק שבו נדלקו.\n3. המשחק יעשה קשה יותר בכל פעם - תשרדו כמה שיותר!',
         _ =>
@@ -172,7 +173,7 @@ List<GameItem> getGamesCatalog(BuildContext context) {
       configs: [
         SliderConfig(
           key: 'start_difficuly',
-          title: switch (lang) {
+          titleBuilder: (l10n) => switch (l10n.localeName) {
             'he' => 'דרגת קושי התחלתית',
             _ => 'Starting Difficulty',
           },
@@ -183,18 +184,21 @@ List<GameItem> getGamesCatalog(BuildContext context) {
         ),
         DropdownConfig(
           key: 'colors_amount',
-          title: switch (lang) {
+          titleBuilder: (l10n) => switch (l10n.localeName) {
             'he' => 'מספר הצבעים',
             _ => 'Colors Amount',
           },
-          options: switch (l10n.localeName) {
+          optionsBuilder: (l10n) => switch (l10n.localeName) {
             'he' => ['4 צבעים', '6 צבעים', '8 צבעים'],
             _ => ['4 colors', '6 colors', '8 colors'],
           },
-          defaultValue: '6 colors',
+          defaultValueBuilder: (l10n) => switch (l10n.localeName) {
+            'he' => '6 צבעים',
+            _ => '6 colors',
+          },
         ),
       ],
       gameBuilder: (configs) => UltimateTicTacToeScreen(configs: configs),
     ),
   ];
-}
+});

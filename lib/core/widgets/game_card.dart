@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gather_app/core/models/game_models.dart';
 import 'package:gather_app/core/screens/game_prep_screen.dart';
 import 'package:gather_app/core/services/settings_provider.dart';
+import 'package:gather_app/l10n/generated/l10n.dart';
 
 class GameCard extends ConsumerStatefulWidget {
   final GameItem game;
@@ -39,6 +40,8 @@ class _GameCardState extends ConsumerState<GameCard>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -125,7 +128,7 @@ class _GameCardState extends ConsumerState<GameCard>
                       ),
                       const Spacer(),
                       Text(
-                        widget.game.title,
+                        widget.game.titleBuilder(l10n),
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 22,
@@ -135,7 +138,7 @@ class _GameCardState extends ConsumerState<GameCard>
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        widget.game.subtitle,
+                        widget.game.subtitleBuilder(l10n),
                         style: TextStyle(
                           color: Colors.white.withAlpha(200),
                           fontSize: 14,

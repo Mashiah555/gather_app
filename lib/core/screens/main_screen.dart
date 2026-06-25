@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gather_app/core/screens/settings_screen.dart';
 import 'package:gather_app/core/widgets/game_card.dart';
-import 'package:gather_app/core/data/games_catalog.dart';
+import 'package:gather_app/core/providers/game_repository_provider.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  ConsumerState<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends ConsumerState<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final gamesCatalog = getGamesCatalog(context);
+    final gamesCatalog = ref.watch(gameRepositoryProvider);
+
+    // getGamesCatalog(context);
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
