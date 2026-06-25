@@ -60,6 +60,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get language => 'Language';
 
   @override
+  String get howToPlay => 'How to Play';
+
+  @override
   String get ultimateTicTacToe => 'Ultimate Tic Tac Toe';
 
   @override
@@ -75,5 +78,5 @@ class AppLocalizationsEn extends AppLocalizations {
   String get simonSays => 'Simon Says';
 
   @override
-  String get howToPlay => 'How to Play';
+  String get theRoadToCeo => 'The Road to CEO';
 }

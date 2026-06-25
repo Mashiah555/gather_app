@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gather_app/core/models/game_models.dart';
 import 'package:gather_app/core/providers/game_config_provider.dart';
+import 'package:gather_app/core/screens/main_screen.dart';
 import 'package:gather_app/l10n/generated/l10n.dart';
 
 class GamePrepScreen extends ConsumerStatefulWidget {
@@ -41,6 +42,12 @@ class _GamePrepScreenState extends ConsumerState<GamePrepScreen> {
             widget.game.id,
             config.key,
             config.defaultValueBuilder(AppLocalizations.of(context)),
+          );
+        } else if (config is SwitchConfig) {
+          _currentConfigs[config.key] = configNotifier.getConfig(
+            widget.game.id,
+            config.key,
+            config.defaultValue,
           );
         }
       }
@@ -270,6 +277,23 @@ class _GamePrepScreenState extends ConsumerState<GamePrepScreen> {
           ),
         ],
       );
+    } else if (config is SwitchConfig) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text(
+              config.titleBuilder(l10n),
+              style: const TextStyle(fontWeight: FontWeight.w600),
+            ),
+          ),
+          Switch(
+            value: _currentConfigs[config.key] ?? config.defaultValue,
+            activeThumbColor: theme.colorScheme.primary,
+            onChanged: (val) => _updateConfig(config.key, val),
+          ),
+        ],
+      );
     }
     return const SizedBox();
   }
@@ -294,7 +318,11 @@ class _GamePrepScreenState extends ConsumerState<GamePrepScreen> {
               context,
               MaterialPageRoute(
                 // We inject the user's configurations directly into the game destination!
-                builder: (context) => widget.game.gameBuilder(_currentConfigs),
+                builder: (context) {
+                  return widget.game.gameBuilder == null
+                      ? MainScreen()
+                      : widget.game.gameBuilder!(_currentConfigs);
+                },
               ),
             );
           },

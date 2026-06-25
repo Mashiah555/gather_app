@@ -200,6 +200,12 @@ abstract class AppLocalizations {
   /// **'Language'**
   String get language;
 
+  /// The title of the 'How to Play' expansion tile
+  ///
+  /// In en, this message translates to:
+  /// **'How to Play'**
+  String get howToPlay;
+
   /// The title of the 'Ultimate Tic Tac Toe' game
   ///
   /// In en, this message translates to:
@@ -230,11 +236,11 @@ abstract class AppLocalizations {
   /// **'Simon Says'**
   String get simonSays;
 
-  /// The title of the 'How to Play' expansion tile
+  /// The title of the 'The Road to CEO' web-game
   ///
   /// In en, this message translates to:
-  /// **'How to Play'**
-  String get howToPlay;
+  /// **'The Road to CEO'**
+  String get theRoadToCeo;
 }
 
 class _AppLocalizationsDelegate

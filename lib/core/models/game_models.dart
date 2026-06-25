@@ -37,6 +37,16 @@ class DropdownConfig extends GameConfigOption {
   });
 }
 
+class SwitchConfig extends GameConfigOption {
+  final bool defaultValue;
+
+  SwitchConfig({
+    required super.key,
+    required super.titleBuilder,
+    required this.defaultValue,
+  });
+}
+
 // A builder function that injects the selected configs into your game screen
 typedef GameBuilder = Widget Function(Map<String, dynamic> selectedConfigs);
 
@@ -49,7 +59,8 @@ class GameItem {
   final IconData icon;
   final List<Color> gradient;
   final List<GameConfigOption> configs;
-  final GameBuilder gameBuilder;
+  final GameBuilder? gameBuilder;
+  final String? externalUrl;
 
   GameItem({
     required this.id,
@@ -59,7 +70,10 @@ class GameItem {
     required this.rulesBuilder,
     required this.icon,
     required this.gradient,
-    required this.configs,
-    required this.gameBuilder,
+    this.configs = const [],
+    this.gameBuilder,
+    this.externalUrl,
   });
+
+  bool get isExternal => externalUrl != null;
 }

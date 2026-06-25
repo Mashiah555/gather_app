@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gather_app/core/models/game_models.dart';
 import 'package:gather_app/games/narrow_down/ui/setup_screen.dart';
+import 'package:gather_app/games/simon_says/views/simon_says_screen.dart';
 import 'package:gather_app/games/target_time/ui/target_time_screen.dart';
 import 'package:gather_app/games/ultimate_tic_tac_toe/ui/ultimate_tic_tac_toe_screen.dart';
 
@@ -82,28 +83,6 @@ final gameRepositoryProvider = Provider<List<GameItem>>((ref) {
       ), // Pass configs to your game
     ),
     GameItem(
-      id: 'crocodile_roulette',
-      titleBuilder: (l10n) => l10n.crocodileRoulette,
-      subtitleBuilder: (l10n) => switch (l10n.localeName) {
-        'he' => 'להחליט',
-        _ => 'TBD',
-      },
-      descriptionBuilder: (l10n) => switch (l10n.localeName) {
-        'he' => 'משחק הישרדות מבוסס מזל.',
-        _ => 'A survival luck-based game.',
-      },
-      rulesBuilder: (l10n) => switch (l10n.localeName) {
-        'he' =>
-          '1. כל שחקן בתורו בוחר שן תנין.\n2. אם תיבחרו את השן הלא נכונה, התנין יאכל אתכם!\n3. השחקן האחרון ששורד - מנצח.',
-        _ =>
-          '1. Each player chooses a crocodile tooth at their turn.\n2. If you choose the wrong tooth, you will be eaten by the crocodile!\n3. The last player to survive - wins.',
-      },
-      icon: Icons.pets_rounded,
-      gradient: const [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)],
-      configs: [],
-      gameBuilder: (configs) => UltimateTicTacToeScreen(configs: configs),
-    ),
-    GameItem(
       id: 'target_time',
       titleBuilder: (l10n) => l10n.targetTime,
       subtitleBuilder: (l10n) => switch (l10n.localeName) {
@@ -149,6 +128,32 @@ final gameRepositoryProvider = Provider<List<GameItem>>((ref) {
       gameBuilder: (configs) => TargetTimeScreen(configs: configs),
     ),
     GameItem(
+      id: 'crocodile_roulette',
+      titleBuilder: (l10n) => l10n.crocodileRoulette,
+      subtitleBuilder: (l10n) => switch (l10n.localeName) {
+        'he' => 'להחליט',
+        _ => 'TBD',
+      },
+      descriptionBuilder: (l10n) => switch (l10n.localeName) {
+        'he' => 'משחק הישרדות מבוסס מזל.',
+        _ => 'A survival luck-based game.',
+      },
+      rulesBuilder: (l10n) => switch (l10n.localeName) {
+        'he' =>
+          '1. כל שחקן בתורו בוחר שן תנין.\n2. אם תיבחרו את השן הלא נכונה, התנין יאכל אתכם!\n3. השחקן האחרון ששורד - מנצח.',
+        _ =>
+          '1. Each player chooses a crocodile tooth at their turn.\n2. If you choose the wrong tooth, you will be eaten by the crocodile!\n3. The last player to survive - wins.',
+      },
+      icon: Icons.pets_rounded,
+      gradient: const [
+        Color.fromARGB(255, 20, 42, 52),
+        Color(0xFF203A43),
+        Color(0xFF2C5364),
+      ],
+      configs: [],
+      gameBuilder: (configs) => UltimateTicTacToeScreen(configs: configs),
+    ),
+    GameItem(
       id: 'simon_says',
       titleBuilder: (l10n) => l10n.simonSays,
       subtitleBuilder: (l10n) => switch (l10n.localeName) {
@@ -172,33 +177,72 @@ final gameRepositoryProvider = Provider<List<GameItem>>((ref) {
       ],
       configs: [
         SliderConfig(
-          key: 'start_difficuly',
+          key: 'speed',
+          titleBuilder: (l10n) => switch (l10n.localeName) {
+            'he' => 'מהירות',
+            _ => 'Playback Speed',
+          },
+          min: 1,
+          max: 8,
+          divisions: 7,
+          defaultValue: 5,
+        ),
+        SwitchConfig(
+          key: 'strict_mode',
+          titleBuilder: (l10n) => switch (l10n.localeName) {
+            'he' => 'מצב קשוח',
+            _ => 'Strict Mode',
+          },
+          defaultValue: true,
+        ),
+        SliderConfig(
+          key: 'color_count',
+          titleBuilder: (l10n) => switch (l10n.localeName) {
+            'he' => 'מספר הצבעים',
+            _ => 'Colors Amount',
+          },
+          min: 2,
+          max: 6,
+          divisions: 4,
+          defaultValue: 4,
+        ),
+        SliderConfig(
+          key: 'starting_difficulty',
           titleBuilder: (l10n) => switch (l10n.localeName) {
             'he' => 'דרגת קושי התחלתית',
             _ => 'Starting Difficulty',
           },
           min: 1,
-          max: 8,
-          divisions: 7,
-          defaultValue: 2,
-        ),
-        DropdownConfig(
-          key: 'colors_amount',
-          titleBuilder: (l10n) => switch (l10n.localeName) {
-            'he' => 'מספר הצבעים',
-            _ => 'Colors Amount',
-          },
-          optionsBuilder: (l10n) => switch (l10n.localeName) {
-            'he' => ['4 צבעים', '6 צבעים', '8 צבעים'],
-            _ => ['4 colors', '6 colors', '8 colors'],
-          },
-          defaultValueBuilder: (l10n) => switch (l10n.localeName) {
-            'he' => '6 צבעים',
-            _ => '6 colors',
-          },
+          max: 5,
+          divisions: 4,
+          defaultValue: 1,
         ),
       ],
-      gameBuilder: (configs) => UltimateTicTacToeScreen(configs: configs),
+      gameBuilder: (configs) => SimonSaysScreen(configs: configs),
+    ),
+    GameItem(
+      id: 'the_road_to_ceo',
+      titleBuilder: (l10n) => l10n.theRoadToCeo,
+      subtitleBuilder: (l10n) => switch (l10n.localeName) {
+        'he' => 'הכנה לעולם התעסוקה',
+        _ => 'Preparation for Employment',
+      },
+      descriptionBuilder: (l10n) => switch (l10n.localeName) {
+        'he' =>
+          'משחק חשיבה קבוצתי שמשפר את מיומנויות התעסוקה עם סיטואציות מציאותיות מעולם העבודה.',
+        _ =>
+          'A social thinking game that improves the employment skills using realistic scenarios from the work world.',
+      },
+      rulesBuilder: (l10n) => switch (l10n.localeName) {
+        'he' => 'פתחו את המשחק בדפדפן.',
+        _ => 'Open the game in the browser.',
+      },
+      icon: Icons.work_rounded,
+      gradient: const [
+        Color.fromARGB(255, 17, 49, 153),
+        Color.fromARGB(255, 56, 157, 239),
+      ],
+      externalUrl: 'https://the-road-to-ceo.web.app/',
     ),
   ];
 });

@@ -58,8 +58,8 @@ class _TargetTimeScreenState extends State<TargetTimeScreen> {
     }
   }
 
-  void _handleKeyEvent(RawKeyEvent event) {
-    if (event is RawKeyDownEvent) {
+  void _handleKeyEvent(KeyEvent event) {
+    if (event is KeyDownEvent) {
       if (_controller.phase == GamePhase.preparation &&
           event.logicalKey == LogicalKeyboardKey.space) {
         _controller.startCountdown();
@@ -79,9 +79,9 @@ class _TargetTimeScreenState extends State<TargetTimeScreen> {
     return ListenableBuilder(
       listenable: _controller,
       builder: (context, _) {
-        return RawKeyboardListener(
+        return KeyboardListener(
           focusNode: _focusNode,
-          onKey: _handleKeyEvent,
+          onKeyEvent: _handleKeyEvent,
           child: Scaffold(
             backgroundColor: const Color(0xFF12121A),
             body: SafeArea(
@@ -126,7 +126,7 @@ class _TargetTimeScreenState extends State<TargetTimeScreen> {
             duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
               color: player.hasStopped
-                  ? player.themeColor.withOpacity(0.15)
+                  ? player.themeColor.withAlpha(38)
                   : const Color(0xFF1E1E24),
               borderRadius: BorderRadius.circular(32),
               border: Border.all(
@@ -136,7 +136,7 @@ class _TargetTimeScreenState extends State<TargetTimeScreen> {
               boxShadow: player.hasStopped
                   ? [
                       BoxShadow(
-                        color: player.themeColor.withOpacity(0.3),
+                        color: player.themeColor.withAlpha(75),
                         blurRadius: 20,
                         spreadRadius: 2,
                       ),
@@ -202,11 +202,11 @@ class _TargetTimeScreenState extends State<TargetTimeScreen> {
       width: 320,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1E24).withOpacity(0.9),
+        color: const Color(0xFF1E1E24).withAlpha(230),
         borderRadius: BorderRadius.circular(40),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withAlpha(128),
             blurRadius: 30,
             spreadRadius: 10,
           ),

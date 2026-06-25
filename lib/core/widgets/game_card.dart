@@ -4,6 +4,7 @@ import 'package:gather_app/core/models/game_models.dart';
 import 'package:gather_app/core/screens/game_prep_screen.dart';
 import 'package:gather_app/core/services/settings_provider.dart';
 import 'package:gather_app/l10n/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GameCard extends ConsumerStatefulWidget {
   final GameItem game;
@@ -54,17 +55,26 @@ class _GameCardState extends ConsumerState<GameCard>
               .read(appColorProvider.notifier)
               .setColor(widget.game.gradient.first);
 
-          await Navigator.push(
-            context,
-            PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-                  GamePrepScreen(game: widget.game),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                    return FadeTransition(opacity: animation, child: child);
-                  },
-            ),
-          );
+          if (widget.game.isExternal) {
+            final uri = Uri.parse(widget.game.externalUrl!);
+            if (await canLaunchUrl(uri)) {
+              // LaunchMode.externalApplication forces it to open in a browser
+              // rather than an in-app webview.
+              await launchUrl(uri, mode: LaunchMode.externalApplication);
+            }
+          } else {
+            await Navigator.push(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    GamePrepScreen(game: widget.game),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+              ),
+            );
+          }
 
           // Reset the app color to the default color
           ref.read(appColorProvider.notifier).resetColor();
@@ -99,8 +109,8 @@ class _GameCardState extends ConsumerState<GameCard>
             child: Stack(
               children: [
                 // Abstract background icon for texture
-                Positioned(
-                  right: -25,
+                PositionedDirectional(
+                  end: -25,
                   bottom: -25,
                   child: Icon(
                     widget.game.icon,

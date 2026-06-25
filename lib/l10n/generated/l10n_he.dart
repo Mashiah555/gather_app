@@ -60,6 +60,9 @@ class AppLocalizationsHe extends AppLocalizations {
   String get language => 'שפה';
 
   @override
+  String get howToPlay => 'איך משחקים?';
+
+  @override
   String get ultimateTicTacToe => 'סופר איקס עיגול';
 
   @override
@@ -75,5 +78,5 @@ class AppLocalizationsHe extends AppLocalizations {
   String get simonSays => 'המלך אמר';
 
   @override
-  String get howToPlay => 'איך משחקים?';
+  String get theRoadToCeo => 'הדרך למנכ\"לות';
 }

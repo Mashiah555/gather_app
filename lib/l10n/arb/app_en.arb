@@ -69,6 +69,10 @@
     "@language": {
         "description": "Label for the setting that controls the application's language"
     },
+    "howToPlay": "How to Play",
+    "@howToPlay": {
+        "description": "The title of the 'How to Play' expansion tile"
+    },
     "ultimateTicTacToe": "Ultimate Tic Tac Toe",
     "@ultimateTicTacToe": {
         "description": "The title of the 'Ultimate Tic Tac Toe' game"
@@ -89,8 +93,8 @@
     "@simonSays": {
         "description": "The title of the 'Simon Says' game"
     },
-    "howToPlay": "How to Play",
-    "@howToPlay": {
-        "description": "The title of the 'How to Play' expansion tile"
+    "theRoadToCeo": "The Road to CEO",
+    "@theRoadToCeo": {
+        "description": "The title of the 'The Road to CEO' web-game"
     }
 }
