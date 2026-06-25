@@ -40,7 +40,7 @@ final gameRepositoryProvider = Provider<List<GameItem>>((ref) {
           min: 0,
           max: 8,
           divisions: 8,
-          defaultValue: 6,
+          defaultValue: 5,
         ),
         DropdownConfig(
           key: 'time_limit',

@@ -6,6 +6,11 @@ import 'package:gather_app/core/services/preferences_service.dart';
 import 'package:gather_app/core/services/settings_provider.dart';
 import 'package:gather_app/l10n/generated/l10n.dart';
 
+/* Deploy to Firebase Hosting:
+ * flutter build web
+ * firebase deploy --only hosting
+*/
+
 void main() async {
   // Load SharedPreferences before the app starts
   await PreferencesService.instance.init();
