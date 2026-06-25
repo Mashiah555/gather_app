@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gather_app/core/models/game_models.dart';
+import 'package:gather_app/games/crocodile_roulette/views/crocodile_roulette_screen.dart';
 import 'package:gather_app/games/narrow_down/ui/setup_screen.dart';
 import 'package:gather_app/games/simon_says/views/simon_says_screen.dart';
 import 'package:gather_app/games/target_time/ui/target_time_screen.dart';
@@ -150,8 +151,25 @@ final gameRepositoryProvider = Provider<List<GameItem>>((ref) {
         Color(0xFF203A43),
         Color(0xFF2C5364),
       ],
-      configs: [],
-      gameBuilder: (configs) => UltimateTicTacToeScreen(configs: configs),
+      configs: [
+        SliderConfig(
+          key: 'players',
+          titleBuilder: (l10n) => 'Number of Players',
+          min: 2,
+          max: 6,
+          divisions: 4,
+          defaultValue: 2,
+        ),
+        SliderConfig(
+          key: 'tooth_count',
+          titleBuilder: (l10n) => 'Amount of Teeth (Difficulty)',
+          min: 8,
+          max: 16,
+          divisions: 8,
+          defaultValue: 12,
+        ),
+      ],
+      gameBuilder: (configs) => CrocodileRouletteScreen(configs: configs),
     ),
     GameItem(
       id: 'simon_says',
